@@ -8,13 +8,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="721*"/>
+        </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="371" Margin="19,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="610"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="371" Margin="19,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="610" Grid.ColumnSpan="2"/>
 
-        <Wpf:CartesianChart x:Name="HGraph" HorizontalAlignment="Left" Height="287" Margin="57,85,0,0" VerticalAlignment="Top" Width="556" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded"/>
-        <Label x:Name="PositionLabel" Content="Posición" HorizontalAlignment="Left" Margin="272,29,0,0" VerticalAlignment="Top" Height="46" Width="114" FontSize="25" FontWeight="Bold"/>
-        <Label x:Name="XLabel" Content="Tiempo (s)" HorizontalAlignment="Left" Margin="272,372,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14"/>
-        <Label x:Name="YLabel" Content="Posición (cm)" HorizontalAlignment="Left" Margin="-18,214,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" RenderTransformOrigin="0.5,0.5">
+        <Wpf:CartesianChart x:Name="HGraph" HorizontalAlignment="Left" Height="287" Margin="57,85,0,0" VerticalAlignment="Top" Width="556" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="2"/>
+        <Label x:Name="PositionLabel" Content="Posición" HorizontalAlignment="Left" Margin="199.4,29,0,0" VerticalAlignment="Top" Height="46" Width="114" FontSize="25" FontWeight="Bold" Grid.Column="1"/>
+        <Label x:Name="XLabel" Content="Tiempo (s)" HorizontalAlignment="Left" Margin="199.4,372,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" Grid.Column="1"/>
+        <Label x:Name="YLabel" Content="Posición (cm)" HorizontalAlignment="Left" Margin="-18,214,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -24,16 +28,19 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="StartButton" Content="Inicio" HorizontalAlignment="Left" Margin="651,29,0,0" VerticalAlignment="Top" Width="124" Height="35" FontWeight="Bold" Background="#FFFFFFD2" Click="StartButton_Click"/>
-        <Button x:Name="StopButton" Content="Detener" HorizontalAlignment="Left" Margin="651,85,0,0" VerticalAlignment="Top" Width="124" Height="35" FontWeight="Bold" Background="#FFFFFFD2" IsEnabled="False" Click="StopButton_Click"/>
-        <Rectangle Fill="#FFFEFFE5" HorizontalAlignment="Left" Height="61" Margin="639,339,0,0" Stroke="Black" VerticalAlignment="Top" Width="136"/>
-        <Label x:Name="TLabel" Content="00:00.00" HorizontalAlignment="Left" Margin="646,355,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119"/>
-        <Label x:Name="TTitle_Label" Content="Tiempo" HorizontalAlignment="Left" Margin="651,339,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ConnectButton" Content="Conectar" HorizontalAlignment="Left" Margin="639,281,0,0" VerticalAlignment="Top" Width="62" Height="33" FontWeight="Bold" Background="#FFFFFFD2" Click="ConnectButton_Click"/>
-        <ComboBox x:Name="PortsComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Margin="639,256,0,0" SelectionChanged="PortsComboBox_SelectionChanged" Height="20"/>
-        <Label x:Name="StatusLabel" Content="Desconectado" HorizontalAlignment="Left" Margin="639,308,0,0" VerticalAlignment="Top" Width="124"/>
-        <Button x:Name="ConnectButton_Copy" Content="Desconectar" HorizontalAlignment="Left" Margin="706,281,0,0" VerticalAlignment="Top" Width="69" Height="33" FontWeight="Bold" Background="#FFFFFFD2" Click="ConnectButton_Click"/>
-        <Button x:Name="SaveButton" Content="Guardar" HorizontalAlignment="Left" Margin="639,219,0,0" VerticalAlignment="Top" Width="136" Click="SaveButton_Click" Height="32"/>
+        <Button x:Name="StartButton" Content="Inicio" HorizontalAlignment="Left" Margin="566.2,29,0,0" VerticalAlignment="Top" Width="136" Height="35" FontWeight="Bold" Background="#FFFFFFD2" Click="StartButton_Click" Grid.Column="1"/>
+        <Button x:Name="StopButton" Content="Detener" HorizontalAlignment="Left" Margin="568.2,69,0,0" VerticalAlignment="Top" Width="134" Height="35" FontWeight="Bold" Background="#FFFFFFD2" IsEnabled="False" Click="StopButton_Click" Grid.Column="1"/>
+        <Rectangle Fill="#FFFEFFE5" HorizontalAlignment="Left" Height="61" Margin="566.4,339,0,0" Stroke="Black" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
+        <Label x:Name="TLabel" Content="00:00.00" HorizontalAlignment="Left" Margin="573.4,355,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119" Grid.Column="1"/>
+        <Label x:Name="TTitle_Label" Content="Tiempo" HorizontalAlignment="Left" Margin="578.4,339,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="ConnectButton" Content="Conectar" HorizontalAlignment="Left" Margin="568.2,171,0,0" VerticalAlignment="Top" Width="62" Height="33" FontWeight="Bold" Background="#FFFFFFD2" Click="ConnectButton_Click" Grid.Column="1"/>
+        <ComboBox x:Name="PortsComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Margin="568.2,146,0,0" SelectionChanged="PortsComboBox_SelectionChanged" Height="20" Grid.Column="1"/>
+        <Label x:Name="StatusLabel" Content="Desconectado" HorizontalAlignment="Left" Margin="568.2,198,0,0" VerticalAlignment="Top" Width="124" Grid.Column="1"/>
+        <Button x:Name="ConnectButton_Copy" Content="Desconectar" HorizontalAlignment="Left" Margin="635.2,171,0,0" VerticalAlignment="Top" Width="69" Height="33" FontWeight="Bold" Background="#FFFFFFD2" Click="ConnectButton_Click" Grid.Column="1"/>
+        <Button x:Name="SaveButton" Content="Guardar" HorizontalAlignment="Left" Margin="568.2,109,0,0" VerticalAlignment="Top" Width="136" Click="SaveButton_Click" Height="32" Grid.Column="1"/>
+        <Rectangle Fill="#FFFEFFE5" HorizontalAlignment="Left" Height="61" Margin="566.2,273,0,0" Stroke="Black" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
+        <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" HorizontalAlignment="Left" Margin="580.2,273,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="MaxHLabel" Content="0.00" HorizontalAlignment="Left" Margin="573.2,289,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119" Grid.Column="1"/>
 
     </Grid>
 </Window>

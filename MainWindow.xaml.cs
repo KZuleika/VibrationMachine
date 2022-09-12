@@ -67,7 +67,8 @@ namespace VibrationMachine
             chart.Series[0].Values.RemoveAt(0);
             chart.AxisX[0].Labels.Add(String.Format("{0:0.##}", t));
             chart.AxisX[0].Labels.RemoveAt(0);
-
+            var maxaux = Math.Truncate(p * 1000) / 1000;
+            MaxHLabel.Content = maxaux.ToString();
         }
 
         private List<double> zerolistd(int n)
@@ -168,6 +169,24 @@ namespace VibrationMachine
             chart.ToolTip = null;
             chart.AxisX[0].Separator.Stroke = new SolidColorBrush(Colors.LightBlue);
             chart.AxisY[0].Separator.Stroke = new SolidColorBrush(Colors.LightBlue);
+        }
+
+        double[] dataparse(string line)
+        {
+            double[] aux = new double[2];
+            string[] cut = line.Split(',');
+            int i = 0;
+            double a = 0;
+            foreach (string c in cut)
+            {
+                if (double.TryParse(c, out a))
+                {
+                    aux[i] = a;
+                }
+                else aux[i] = 0;
+                i++;
+            }
+            return aux;
         }
 
 
