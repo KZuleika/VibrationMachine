@@ -30,19 +30,26 @@ namespace VibrationMachine
     {
         private SerialPort myport = new SerialPort();
         private DateTime StartTime, StopTime;
+        private bool flag = false;
         public MainWindow()
         {
             InitializeComponent();
-            GraphInit(HGraph);
+            GraphInit(HGraph); myport.BaudRate = 9600;
+            myport.PortName = "COM5";
+            myport.DataReceived += serialPort1_DataReceived;
+            myport.Open();
         }
  
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             StopButton.IsEnabled = true;
             StartButton.IsEnabled = false;
-            var rand = new Random();
-            UpdateChart(rand.NextDouble(), 6, HGraph);
             StartTime = DateTime.Now;
+            var rand = new Random();
+            //UpdateChart(rand.NextDouble(), 6, HGraph);
+            //StartTime = DateTime.Now;
+            if (myport.IsOpen) MessageBox.Show("PORT OPEN");
+            flag = true;
         }
 
 
@@ -50,14 +57,41 @@ namespace VibrationMachine
         {
             StopButton.IsEnabled = false;
             StartButton.IsEnabled = true;
-            StopTime = DateTime.Now;
-            double time = StopTime.Subtract(StartTime).TotalSeconds;
-            double secrest = (time / 60.0 - Math.Floor(time / 60.0)) * 60;
-            TLabel.Content = Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00");
+            flag = false;
+            //StopTime = DateTime.Now;
+            //double time = StopTime.Subtract(StartTime).TotalSeconds;
+            //double secrest = (time / 60.0 - Math.Floor(time / 60.0)) * 60;
+            //TLabel.Content = Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00");
         }
 
         private void HGraph_Loaded(object sender, RoutedEventArgs e)
         {
+
+        }
+                private void LineReceived(string line)
+        {
+            StopTime = DateTime.Now;
+            double time = StopTime.Subtract(StartTime).TotalSeconds;
+            double secrest = (time / 60.0 - Math.Floor(time / 60.0)) * 60;
+            double[] packet = dataparse(line);
+
+
+            this.Dispatcher.Invoke(() =>
+            {
+                TLabel.Content = Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00");
+                UpdateChart(packet[0], time, HGraph, 0);
+                MaxHLabel.Content = packet[1];
+            });
+
+        }
+
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            if (flag)
+            {
+                string line = myport.ReadLine();
+                LineReceived(line);
+            }
 
         }
 
@@ -69,6 +103,17 @@ namespace VibrationMachine
             chart.AxisX[0].Labels.RemoveAt(0);
             var maxaux = Math.Truncate(p * 1000) / 1000;
             MaxHLabel.Content = maxaux.ToString();
+        }
+
+        private void UpdateChart(double y, double x, CartesianChart chart, int i)
+        {
+            chart.Series[0].Values.Add(x);
+            chart.Series[0].Values.RemoveAt(0);
+            chart.AxisX[0].Labels.Add(String.Format("{0:0.##}", y));
+            chart.AxisX[0].Labels.RemoveAt(0);
+
+            //chart.Series[i].Values.Add(new ObservablePoint { X = x, Y = y });
+            //chart.Series[i].Values.RemoveAt(0);
         }
 
         private List<double> zerolistd(int n)
