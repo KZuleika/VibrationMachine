@@ -41,6 +41,7 @@
         <Rectangle Fill="#FFFEFFE5" HorizontalAlignment="Left" Height="61" Margin="566.2,273,0,0" Stroke="Black" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
         <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" HorizontalAlignment="Left" Margin="580.2,273,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="MaxHLabel" Content="0.00" HorizontalAlignment="Left" Margin="573.2,289,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119" Grid.Column="1"/>
+        <Label x:Name="LastX_Label" Content="Desconectado" HorizontalAlignment="Left" Margin="566.2,224,0,0" VerticalAlignment="Top" Width="124" Grid.Column="1"/>
 
     </Grid>
 </Window>

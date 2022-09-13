@@ -68,7 +68,7 @@ namespace VibrationMachine
         {
 
         }
-                private void LineReceived(string line)
+        private void LineReceived(string line)
         {
             StopTime = DateTime.Now;
             double time = StopTime.Subtract(StartTime).TotalSeconds;
@@ -81,6 +81,7 @@ namespace VibrationMachine
                 TLabel.Content = Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00");
                 UpdateChart(packet[0], time, HGraph, 0);
                 MaxHLabel.Content = packet[1];
+                LastX_Label.Content = packet[0];
             });
 
         }
@@ -107,13 +108,13 @@ namespace VibrationMachine
 
         private void UpdateChart(double y, double x, CartesianChart chart, int i)
         {
-            chart.Series[0].Values.Add(x);
-            chart.Series[0].Values.RemoveAt(0);
-            chart.AxisX[0].Labels.Add(String.Format("{0:0.##}", y));
-            chart.AxisX[0].Labels.RemoveAt(0);
+            //chart.Series[0].Values.Add(x);
+            //chart.Series[0].Values.RemoveAt(0);
+            //chart.AxisX[0].Labels.Add(String.Format("{0:0.##}", y));
+            //chart.AxisX[0].Labels.RemoveAt(0);
 
-            //chart.Series[i].Values.Add(new ObservablePoint { X = x, Y = y });
-            //chart.Series[i].Values.RemoveAt(0);
+            chart.Series[i].Values.Add(new ObservablePoint { X = x, Y = y });
+            chart.Series[i].Values.RemoveAt(0);
         }
 
         private List<double> zerolistd(int n)
@@ -187,7 +188,18 @@ namespace VibrationMachine
         private void GraphInit(CartesianChart chart)
         {
             List<double> yinit = zerolistd(50);
-            List<string> xinit = zerolists(50);
+            List<double> xinit = zerolistd(50);
+
+            ChartValues<ObservablePoint> xy = new ChartValues<ObservablePoint>();
+            for (int i = 0; i < yinit.Count; i++)
+            {
+                xy.Add(new ObservablePoint
+                {
+                    X = xinit[i],
+                    Y = yinit[i]
+                });
+            }
+
 
             chart.AxisX.Clear();
             chart.AxisY.Clear();
@@ -195,13 +207,13 @@ namespace VibrationMachine
 
             chart.AxisX.Add(new Axis()
             {
-                Title = "Time",
-                Labels = xinit,
+                Title = "Tiempo (t/s)",
+                LabelFormatter = value => value.ToString("0.##"),
                 Foreground = new SolidColorBrush(Colors.LightBlue)
             });
             chart.AxisY.Add(new Axis()
             {
-                Title = "Position",
+                Title = "Position (h/m)",
                 LabelFormatter = value => value.ToString("0.##"),
                 Foreground = new SolidColorBrush(Colors.LightBlue)
             });
@@ -209,7 +221,7 @@ namespace VibrationMachine
             {
                 Title = "Position",
                 LineSmoothness = 0,
-                Values = new ChartValues<double>(yinit)
+                Values = xy
             });
             chart.ToolTip = null;
             chart.AxisX[0].Separator.Stroke = new SolidColorBrush(Colors.LightBlue);
