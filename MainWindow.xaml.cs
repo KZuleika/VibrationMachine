@@ -241,6 +241,14 @@ namespace VibrationMachine
             chart.AxisY[0].Separator.Stroke = new SolidColorBrush(Colors.LightBlue);
         }
 
+        private void PW_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //myport.Write(PW_Slider.Value.ToString());
+            string dutycycle = PW_Slider.Value.ToString();
+            if (dutycycle.Length > 5) dutycycle.Remove(5);
+            PWM_Label.Content = dutycycle + " %";
+        }
+
         double[] dataparse(string line)
         {
             double[] aux = new double[2];
