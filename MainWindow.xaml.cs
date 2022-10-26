@@ -35,9 +35,15 @@ namespace VibrationMachine
         {
             InitializeComponent();
             GraphInit(HGraph); myport.BaudRate = 9600;
-            myport.PortName = "COM5";
-            myport.DataReceived += serialPort1_DataReceived;
-            myport.Open();
+            foreach(string s in SerialPort.GetPortNames())
+            {
+                ComboBoxItem comboBoxItem = new ComboBoxItem();
+                comboBoxItem.Content = s;
+                PortsComboBox.Items.Add(comboBoxItem);
+            }
+            //myport.PortName = "COM6";
+            //myport.DataReceived += serialPort1_DataReceived;
+            //myport.Open();
         }
  
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -140,12 +146,17 @@ namespace VibrationMachine
         {
             try
             {
-                string portName = PortsComboBox.SelectedItem as string;
+                string portName = PortsComboBox.SelectedItem.ToString().Replace
+                    ("System.Windows.Controls.ComboBoxItem:"," ").Trim();
+                MessageBox.Show(portName);
                 myport.PortName = portName;
                 myport.BaudRate = 9600;
+                myport.DataReceived += serialPort1_DataReceived;
                 myport.Open();
                 MessageBox.Show("Conexión exitosa");
-                StatusLabel.Content = "Conectado";
+                StatusLabel.Content = "Estado: Conectado";
+                ConnectButton.IsEnabled = false;
+                DisconnectButton.IsEnabled = true;
             }
             catch(Exception)
             {
@@ -164,25 +175,27 @@ namespace VibrationMachine
             try
             {
                 myport.Close();
-                StatusLabel.Content = "Desconectado";
+                StatusLabel.Content = "Estado: Desconectado";
             }
             catch(Exception)
             {
                 MessageBox.Show("Primero conecte su dispositivo, luego haga clic en desconectar.");
             }
-
+            ConnectButton.IsEnabled = true;
+            DisconnectButton.IsEnabled = false;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveData(zerolists(50));
-            MessageBox.Show("Guardado con éxito.");
+            if(SaveData(zerolists(50)))
+                MessageBox.Show("Guardado con éxito.");
         }
-        private void SaveData(List<string> dat)
+        private bool SaveData(List<string> dat)
         {
             StreamWriter writer = new StreamWriter("data.txt");
             dat.ForEach(s => writer.WriteLine(s));
             writer.Close();
+            return true;
         }
 
         private void GraphInit(CartesianChart chart)
