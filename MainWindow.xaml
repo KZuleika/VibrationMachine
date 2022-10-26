@@ -13,12 +13,12 @@
             <ColumnDefinition Width="721*"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="492" Margin="19,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="740" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="554" Margin="19,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="740" Grid.ColumnSpan="2"/>
 
-        <Wpf:CartesianChart x:Name="HGraph" HorizontalAlignment="Left" Height="410" Margin="57,85,0,0" VerticalAlignment="Top" Width="671" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="2"/>
+        <Wpf:CartesianChart x:Name="HGraph" HorizontalAlignment="Left" Height="475" Margin="57,85,0,0" VerticalAlignment="Top" Width="671" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="2"/>
         <Label x:Name="PositionLabel" Content="Posición" HorizontalAlignment="Left" Margin="199.4,29,0,0" VerticalAlignment="Top" Height="46" Width="114" FontSize="25" FontWeight="Bold" Grid.Column="1"/>
         <Label x:Name="XLabel" Content="Tiempo (s)" HorizontalAlignment="Left" Margin="199.4,372,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" Grid.Column="1"/>
-        <Label x:Name="YLabel" Content="Posición (cm)" HorizontalAlignment="Left" Margin="-18,214,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+        <Label x:Name="YLabel" Content="Posición (cm)" HorizontalAlignment="Left" Margin="-18,287,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
