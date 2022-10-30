@@ -81,7 +81,12 @@ namespace VibrationMachine
             double secrest = (time / 60.0 - Math.Floor(time / 60.0)) * 60;
             double[] packet = dataparse(line);
 
+            SaveData(
+                Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00") 
+                + ","+ 
+                line);
 
+            
             this.Dispatcher.Invoke(() =>
             {
                 TLabel.Content = Math.Floor(time / 60.0).ToString("00") + ":" + secrest.ToString("00.00");
@@ -148,7 +153,6 @@ namespace VibrationMachine
             {
                 string portName = PortsComboBox.SelectedItem.ToString().Replace
                     ("System.Windows.Controls.ComboBoxItem:"," ").Trim();
-                MessageBox.Show(portName);
                 myport.PortName = portName;
                 myport.BaudRate = 9600;
                 myport.DataReceived += serialPort1_DataReceived;
@@ -185,17 +189,24 @@ namespace VibrationMachine
             DisconnectButton.IsEnabled = false;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            if(SaveData(zerolists(50)))
-                MessageBox.Show("Guardado con éxito.");
+            MessageBox.Show("Guardado automático con éxito. " +
+                "Disponible en \n" +
+                "VibrationMachine/bin/Debug/dataSaved.csv ");
         }
-        private bool SaveData(List<string> dat)
+       
+        private void SaveData(List<string> dat)
         {
-            StreamWriter writer = new StreamWriter("data.txt");
+            StreamWriter writer = new StreamWriter("data.csv");
             dat.ForEach(s => writer.WriteLine(s));
             writer.Close();
-            return true;
+        }
+        private void SaveData(string dat)
+        {
+            StreamWriter writer = new StreamWriter("dataSaved.csv", true);
+            writer.WriteLine(dat);
+            writer.Close();
         }
 
         private void GraphInit(CartesianChart chart)
@@ -241,12 +252,15 @@ namespace VibrationMachine
             chart.AxisY[0].Separator.Stroke = new SolidColorBrush(Colors.LightBlue);
         }
 
-        private void PW_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            //myport.Write(PW_Slider.Value.ToString());
-            string dutycycle = PW_Slider.Value.ToString();
-            if (dutycycle.Length > 5) dutycycle.Remove(5);
-            PWM_Label.Content = dutycycle + " %";
+            if (myport.IsOpen)
+            {
+                if (Convert.ToBoolean(PWM_RadioButton20.IsChecked) == true) myport.Write("a");
+                if (Convert.ToBoolean(PWM_RadioButton40.IsChecked) == true) myport.Write("b");
+                if (Convert.ToBoolean(PWM_RadioButton60.IsChecked) == true) myport.Write("c");
+                if (Convert.ToBoolean(PWM_RadioButton80.IsChecked) == true) myport.Write("d");
+            }
         }
 
         double[] dataparse(string line)
