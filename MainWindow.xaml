@@ -6,19 +6,21 @@
         xmlns:local="clr-namespace:VibrationMachine"
         xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="VibrationMachine.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="622.8" Width="977.6">
+        Title="MainWindow" Height="762" Width="1222.4">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="73*"/>
-            <ColumnDefinition Width="721*"/>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="72*"/>
+            <ColumnDefinition Width="811*"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="554" Margin="19,29,0,0" Stroke="Black" VerticalAlignment="Top" Width="740" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" Margin="19,29,220,21" Stroke="Black" Grid.ColumnSpan="4"/>
 
-        <Wpf:CartesianChart x:Name="HGraph" HorizontalAlignment="Left" Height="475" Margin="57,85,0,0" VerticalAlignment="Top" Width="671" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="2"/>
-        <Label x:Name="PositionLabel" Content="Posición" HorizontalAlignment="Left" Margin="199.4,29,0,0" VerticalAlignment="Top" Height="46" Width="114" FontSize="25" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="XLabel" Content="Tiempo (s)" HorizontalAlignment="Left" Margin="199.4,372,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" Grid.Column="1"/>
-        <Label x:Name="YLabel" Content="Posición (cm)" HorizontalAlignment="Left" Margin="-18,287,0,0" VerticalAlignment="Top" Height="28" Width="114" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+        <Wpf:CartesianChart x:Name="HGraph" Margin="25.6,98,246,49" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Label x:Name="PositionLabel" Content="Posición" Margin="274.4,29,626,0" VerticalAlignment="Top" Height="46" FontSize="25" FontWeight="Bold" Grid.Column="3"/>
+        <Label x:Name="XLabel" Content="Tiempo (s)" Margin="259.4,683,641,21" FontSize="14" Grid.Column="3"/>
+        <Label x:Name="YLabel" Content="Posición (mm)" Margin="-18,287,15.2,417" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -28,31 +30,38 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="StartButton" Content="Inicio" HorizontalAlignment="Left" Margin="696.4,21,0,0" VerticalAlignment="Top" Width="80" Height="35" FontWeight="Bold" Background="#FFE6F4FF" Click="StartButton_Click" Grid.Column="1"/>
-        <Button x:Name="StopButton" Content="Detener" HorizontalAlignment="Left" Margin="781.4,21,0,0" VerticalAlignment="Top" Width="80" Height="35" FontWeight="Bold" Background="#FFFFFFD2" IsEnabled="False" Click="StopButton_Click" Grid.Column="1"/>
-        <Rectangle Fill="#FFE6F4FF" HorizontalAlignment="Left" Height="61" Margin="725.4,469,0,0" Stroke="Black" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
-        <Label x:Name="TLabel" Content="00:00.00" HorizontalAlignment="Left" Margin="732.4,485,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119" Grid.Column="1"/>
-        <Label x:Name="TTitle_Label" Content="Tiempo" HorizontalAlignment="Left" Margin="737.4,469,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="ConnectButton" Content="Conectar" HorizontalAlignment="Left" Margin="696.4,145,0,0" VerticalAlignment="Top" Width="80" Height="30" FontWeight="Bold" Background="#FFE6F4FF" Click="ConnectButton_Click" Grid.Column="1"/>
-        <ComboBox x:Name="PortsComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Margin="749.4,113,0,0" SelectionChanged="PortsComboBox_SelectionChanged" Height="20" Grid.Column="1"/>
-        <Label x:Name="StatusLabel" Content="Estado: Desconectado" HorizontalAlignment="Left" Margin="696.4,172,0,0" VerticalAlignment="Top" Width="153" Grid.Column="1"/>
-        <Button x:Name="DisconnectButton" Content="Desconectar" HorizontalAlignment="Left" Margin="781.4,145,0,0" VerticalAlignment="Top" Width="80" Height="30" FontWeight="Bold" Background="#FFE6F4FF" Click="DisconnectButton_Click" Grid.Column="1" IsEnabled="False"/>
-        <Button x:Name="OpenButton" Content="Abrir CSV" HorizontalAlignment="Left" Margin="696.4,64,0,0" VerticalAlignment="Top" Width="165" Click="OpenButton_Click" Height="32" Grid.Column="1"/>
-        <Rectangle Fill="#FFE6F4FF" HorizontalAlignment="Left" Height="61" Margin="725.4,403,0,0" Stroke="Black" VerticalAlignment="Top" Width="136" Grid.Column="1"/>
-        <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" HorizontalAlignment="Left" Margin="739.4,403,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="MaxHLabel" Content="0.00" HorizontalAlignment="Left" Margin="732.4,419,0,0" VerticalAlignment="Top" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Height="45" Width="119" Grid.Column="1"/>
-        <Rectangle Fill="#FFD9EEF7" HorizontalAlignment="Left" Height="30" Margin="696.4,224,0,0" Stroke="#FF4F98F3" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.513,0.788" Grid.Column="1"/>
-        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Center" Margin="704.4,224,31.2,338.8" VerticalAlignment="Center" Width="146" FontSize="15" Height="30" Grid.Column="1"/>
-        <Label x:Name="PortLabel" Content="Puerto:" Grid.Column="1" HorizontalAlignment="Left" Margin="696.4,107,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LastValueTLabel" Content="Último dato registrado" HorizontalAlignment="Left" Margin="696.4,203,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="165" Grid.Column="1"/>
-        <Label x:Name="PWM_IndicatorTitle_Label" Content="PWM" HorizontalAlignment="Left" Margin="696.4,266,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="140" Grid.Column="1"/>
-        <Rectangle Fill="#FFE2F7D9" HorizontalAlignment="Left" Height="111" Margin="696.4,287,0,0" Stroke="#FF4F98F3" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.513,0.788" Grid.Column="1"/>
-        <StackPanel Margin="704.4,297,32.2,194.8" Grid.Column="1">
-            <Label FontWeight="Bold" Content="Ciclo de trabajo"/>
-            <RadioButton x:Name="PWM_RadioButton80" Content="80%" Checked="RadioButton_Checked" IsChecked="True"/>
-            <RadioButton x:Name="PWM_RadioButton60" Content="60%" Checked="RadioButton_Checked" Margin="0,0,-0.2,0"/>
-            <RadioButton x:Name="PWM_RadioButton40" IsChecked="True" Content="40%" Checked="RadioButton_Checked"/>
+        <Button x:Name="StartButton" Content="Inicio" Margin="0,37,105,0" VerticalAlignment="Top" Height="35" FontWeight="Bold" Background="#FFE6F4FF" Click="StartButton_Click" Grid.Column="3" HorizontalAlignment="Right" Width="80"/>
+        <Button x:Name="StopButton" Content="Detener" Margin="0,37,20,0" VerticalAlignment="Top" Height="35" FontWeight="Bold" Background="#FFFFFFD2" IsEnabled="False" Click="StopButton_Click" Grid.Column="3" HorizontalAlignment="Right" Width="80"/>
+        <Rectangle Fill="#FFE6F4FF" Margin="0,0,23,49" Stroke="Black" Grid.Column="3" Height="61" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="162"/>
+        <Label x:Name="TLabel" Content="00:00.00" Margin="0,0,35,49" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Grid.Column="3" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="142"/>
+        <Label x:Name="TTitle_Label" Content="Tiempo (s)" Margin="0,0,69,84" Grid.Column="3" HorizontalAlignment="Right" Width="102" Height="26" VerticalAlignment="Bottom"/>
+        <Button x:Name="ConnectButton" Content="Conectar" Margin="0,108,105,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" Background="#FFE6F4FF" Click="ConnectButton_Click" Grid.Column="3" HorizontalAlignment="Right" Width="80"/>
+        <ComboBox x:Name="PortsComboBox" VerticalAlignment="Top" Margin="0,84,20,0" SelectionChanged="PortsComboBox_SelectionChanged" Height="20" Grid.Column="3" HorizontalAlignment="Right" Width="112"/>
+        <Label x:Name="StatusLabel" Content="Estado: Desconectado" Margin="0,135,32,0" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Width="153"/>
+        <Button x:Name="DisconnectButton" Content="Desconectar" Margin="0,108,20,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" Background="#FFE6F4FF" Click="DisconnectButton_Click" Grid.Column="3" IsEnabled="False" HorizontalAlignment="Right" Width="80"/>
+        <Rectangle Fill="#FFE6F4FF" Margin="0,0,23,115" Stroke="Black" Grid.Column="3" HorizontalAlignment="Right" Width="162" Height="61" VerticalAlignment="Bottom"/>
+        <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" Margin="0,0,29,150" Grid.Column="3" HorizontalAlignment="Right" Width="139" Height="26" VerticalAlignment="Bottom"/>
+        <Label x:Name="MaxHLabel" Content="0.00" Margin="0,0,35,115" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Grid.Column="3" HorizontalAlignment="Right" Width="142" Height="45" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#FFD9EEF7" Height="30" Margin="0,184,20,0" Stroke="#FF4F98F3" VerticalAlignment="Top" RenderTransformOrigin="0.513,0.788" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
+        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Right" Margin="0,189,35,513" VerticalAlignment="Center" Width="146" FontSize="15" Height="30" Grid.Column="3"/>
+        <Label x:Name="PortLabel" Content="Puerto:" Grid.Column="3" Margin="0,78,137,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="48"/>
+        <Label x:Name="LastValueTLabel" Content="Último dato registrado" Margin="0,163,20,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
+        <Label x:Name="PWM_IndicatorTitle_Label" Content="PWM" Margin="0,224,45,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="140"/>
+        <Rectangle Fill="#FFE2F7D9" Height="212" Margin="0,245,25,0" Stroke="#FF4F98F3" VerticalAlignment="Top" RenderTransformOrigin="0.513,0.788" Grid.Column="3" HorizontalAlignment="Right" Width="160"/>
+        <StackPanel Margin="0,245,47,0" Grid.Column="3" HorizontalAlignment="Right" Width="132" Height="347" VerticalAlignment="Top">
+            <Label FontWeight="Bold" Content="Ciclo de trabajo" Margin="0,0,9.8,0"/>
+            <RadioButton x:Name="PWM_RadioButton95" Content="95%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton90" Content="90%" Checked="RadioButton_Checked" Margin="0,0,-0.2,0"/>
+            <RadioButton x:Name="PWM_RadioButton80" IsChecked="True" Content="80%" Checked="RadioButton_Checked"/>
+            <RadioButton x:Name="PWM_RadioButton70" Content="70%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton60" Content="60%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton50" Content="50%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton40" Content="40%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton30" Content="30%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton25" Content="25%" Checked="RadioButton_Checked" IsChecked="True" Margin="0,0,-0.2,0"/>
             <RadioButton x:Name="PWM_RadioButton20" Content="20%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton15" Content="15%" Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton x:Name="PWM_RadioButton10" Content="10%" Checked="RadioButton_Checked" IsChecked="True" Height="14" Margin="0,0,-0.2,0"/>
         </StackPanel>
     </Grid>
 

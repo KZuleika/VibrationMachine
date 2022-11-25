@@ -256,10 +256,18 @@ namespace VibrationMachine
         {
             if (myport.IsOpen)
             {
-                if (Convert.ToBoolean(PWM_RadioButton20.IsChecked) == true) myport.Write("a");
-                if (Convert.ToBoolean(PWM_RadioButton40.IsChecked) == true) myport.Write("b");
-                if (Convert.ToBoolean(PWM_RadioButton60.IsChecked) == true) myport.Write("c");
-                if (Convert.ToBoolean(PWM_RadioButton80.IsChecked) == true) myport.Write("d");
+                if (Convert.ToBoolean(PWM_RadioButton10.IsChecked) == true) myport.Write("a");
+                if (Convert.ToBoolean(PWM_RadioButton15.IsChecked) == true) myport.Write("b");
+                if (Convert.ToBoolean(PWM_RadioButton20.IsChecked) == true) myport.Write("c");
+                if (Convert.ToBoolean(PWM_RadioButton25.IsChecked) == true) myport.Write("d");
+                if (Convert.ToBoolean(PWM_RadioButton30.IsChecked) == true) myport.Write("e");
+                if (Convert.ToBoolean(PWM_RadioButton40.IsChecked) == true) myport.Write("f");
+                if (Convert.ToBoolean(PWM_RadioButton50.IsChecked) == true) myport.Write("g");
+                if (Convert.ToBoolean(PWM_RadioButton60.IsChecked) == true) myport.Write("h");
+                if (Convert.ToBoolean(PWM_RadioButton70.IsChecked) == true) myport.Write("i");
+                if (Convert.ToBoolean(PWM_RadioButton80.IsChecked) == true) myport.Write("j");
+                if (Convert.ToBoolean(PWM_RadioButton90.IsChecked) == true) myport.Write("k");
+                if (Convert.ToBoolean(PWM_RadioButton95.IsChecked) == true) myport.Write("l");
             }
         }
 
