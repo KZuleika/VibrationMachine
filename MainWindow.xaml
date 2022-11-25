@@ -43,7 +43,7 @@
         <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" Margin="0,0,29,150" Grid.Column="3" HorizontalAlignment="Right" Width="139" Height="26" VerticalAlignment="Bottom"/>
         <Label x:Name="MaxHLabel" Content="0.00" Margin="0,0,35,115" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Grid.Column="3" HorizontalAlignment="Right" Width="142" Height="45" VerticalAlignment="Bottom"/>
         <Rectangle Fill="#FFD9EEF7" Height="30" Margin="0,184,20,0" Stroke="#FF4F98F3" VerticalAlignment="Top" RenderTransformOrigin="0.513,0.788" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
-        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Right" Margin="0,189,35,533.8" VerticalAlignment="Center" Width="146" FontSize="15" Height="30" Grid.Column="3"/>
+        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Right" Margin="0,184,35,0" VerticalAlignment="Top" Width="146" FontSize="15" Height="30" Grid.Column="3"/>
         <Label x:Name="PortLabel" Content="Puerto:" Grid.Column="3" Margin="0,78,137,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="48"/>
         <Label x:Name="LastValueTLabel" Content="Último dato registrado" Margin="0,163,20,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
         <Label x:Name="PWM_IndicatorTitle_Label" Content="PWM" Margin="0,224,45,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="140"/>
