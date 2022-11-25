@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VibrationMachine"
         xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="VibrationMachine.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="762" Width="1222.4">
+        Title="MainWindow" Height="782.4" Width="1222.4">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="47*"/>
@@ -17,9 +17,9 @@
 
         <Rectangle Fill="#FFF4F4F5" Margin="19,29,220,21" Stroke="Black" Grid.ColumnSpan="4"/>
 
-        <Wpf:CartesianChart x:Name="HGraph" Margin="25.6,98,246,49" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <Label x:Name="PositionLabel" Content="Posición" Margin="274.4,29,626,0" VerticalAlignment="Top" Height="46" FontSize="25" FontWeight="Bold" Grid.Column="3"/>
-        <Label x:Name="XLabel" Content="Tiempo (s)" Margin="259.4,683,641,21" FontSize="14" Grid.Column="3"/>
+        <Wpf:CartesianChart x:Name="HGraph" Margin="24.6,88,247,54" DisableAnimations="True" Hoverable="False" DataTooltip="{x:Null}" Foreground="#FF477CE0" Loaded="HGraph_Loaded" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Label x:Name="PositionLabel" Content="Posición" Margin="259.4,37,641,0" VerticalAlignment="Top" Height="46" FontSize="25" FontWeight="Bold" Grid.Column="3"/>
+        <Label x:Name="XLabel" Content="Tiempo (s)" Margin="259.4,678,641,26" FontSize="14" Grid.Column="3"/>
         <Label x:Name="YLabel" Content="Posición (mm)" Margin="-18,287,15.2,417" FontSize="14" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -43,7 +43,7 @@
         <Label x:Name="MaxHTitle_Label" Content="Altura máxima (mm)" Margin="0,0,29,150" Grid.Column="3" HorizontalAlignment="Right" Width="139" Height="26" VerticalAlignment="Bottom"/>
         <Label x:Name="MaxHLabel" Content="0.00" Margin="0,0,35,115" FontSize="25" FontStretch="Expanded" Foreground="#FF080808" Background="{x:Null}" Grid.Column="3" HorizontalAlignment="Right" Width="142" Height="45" VerticalAlignment="Bottom"/>
         <Rectangle Fill="#FFD9EEF7" Height="30" Margin="0,184,20,0" Stroke="#FF4F98F3" VerticalAlignment="Top" RenderTransformOrigin="0.513,0.788" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
-        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Right" Margin="0,189,35,513" VerticalAlignment="Center" Width="146" FontSize="15" Height="30" Grid.Column="3"/>
+        <Label x:Name="LastX_Label" Content="LastX" HorizontalAlignment="Right" Margin="0,189,35,533.8" VerticalAlignment="Center" Width="146" FontSize="15" Height="30" Grid.Column="3"/>
         <Label x:Name="PortLabel" Content="Puerto:" Grid.Column="3" Margin="0,78,137,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="48"/>
         <Label x:Name="LastValueTLabel" Content="Último dato registrado" Margin="0,163,20,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="165"/>
         <Label x:Name="PWM_IndicatorTitle_Label" Content="PWM" Margin="0,224,45,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="140"/>
