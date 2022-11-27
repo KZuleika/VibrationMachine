@@ -31,6 +31,7 @@ namespace VibrationMachine
         private SerialPort myport = new SerialPort();
         private DateTime StartTime, StopTime;
         private bool flag = false;
+        private int samplesInGraph = 50;
         public MainWindow()
         {
             InitializeComponent();
@@ -54,7 +55,7 @@ namespace VibrationMachine
             var rand = new Random();
             //UpdateChart(rand.NextDouble(), 6, HGraph);
             //StartTime = DateTime.Now;
-            if (myport.IsOpen) MessageBox.Show("PORT OPEN");
+            //if (myport.IsOpen) MessageBox.Show("PORT OPEN");
             flag = true;
         }
 
@@ -211,8 +212,8 @@ namespace VibrationMachine
 
         private void GraphInit(CartesianChart chart)
         {
-            List<double> yinit = zerolistd(50);
-            List<double> xinit = zerolistd(50);
+            List<double> yinit = zerolistd(samplesInGraph);
+            List<double> xinit = zerolistd(samplesInGraph);
 
             ChartValues<ObservablePoint> xy = new ChartValues<ObservablePoint>();
             for (int i = 0; i < yinit.Count; i++)
